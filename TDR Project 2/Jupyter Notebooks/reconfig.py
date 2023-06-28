@@ -1,11 +1,12 @@
 import xlrd
 
-workbook = xlrd.open_workbook(r'genus 3.xls')
+workbook = xlrd.open_workbook(r'sphere.xls')
 worksheet = workbook.sheet_by_name('Sheet 1')
 
-with open('genus 3 clean.txt', 'w+') as f:
+with open('sphere clean.txt', 'w+') as f:
     for i in range(worksheet.nrows-1):
-        for j in range(5):
+        for j in range(4):
             f.write(worksheet.cell(i, j).value)
             f.write(', ')
+        f.write(worksheet.cell(i, 3).value)
         f.write('\n')
