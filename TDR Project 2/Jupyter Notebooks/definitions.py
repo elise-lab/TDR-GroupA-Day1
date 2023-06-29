@@ -48,27 +48,27 @@ def get_intersections(x0, y0, r0, x1, y1, r1):#find intersection points of two c
         return [[x3, y3], [x4, y4]]
 
 def max_sum_angle_ad(dist, start_ang): #Take in the distances of our pentagon and calculate max alpha+beta for adjacent angles
-    if start_ang >= (math.pi)/2:
-        raise InternalException("Input new angle")
-    else:
+    try:
         c = dist[1] + dist[2]
         b = len_side(c, dist[0], start_ang)
         beta = angle_from_side(b, dist[0], c)
         alpha = angle_from_side(1, dist[3], b) #weirdness when we consider 1, 1, b?
         gamma = angle_from_side(1, b, dist[3])
+    except ValueError:
+        raise ValueError('input new starting angle')
 
         return alpha + beta + gamma
 
 def max_sum_angle_op(dist, start_ang): #Take in the distances of our pentagon and calculate max alpha+beta for adjacent angles
-    if start_ang >= (math.pi)/2:
-        raise InternalException("Input new angle")
-    else:
+    try:
         c = dist[1] + dist[2]
         b = len_side(dist[0], c, start_ang)
         gammabeta = angle_from_side(b,dist[0],c)
         gamma = angle_from_side(b,1,dist[3])
         alpha = angle_from_side(1,dist[3], b)
         return alpha+gammabeta-gamma
+    except ValueError:
+        raise ValueError('input new starting angle')
 
 
 
