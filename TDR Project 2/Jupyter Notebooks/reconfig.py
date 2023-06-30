@@ -8,5 +8,5 @@ with open('data/sphere clean.txt', 'w+') as f:
         for j in range(4):
             f.write(worksheet.cell(i, j).value)
             f.write(', ')
-        f.write(worksheet.cell(i, 3).value)
+        f.write(worksheet.cell(i, 4).value)
         f.write('\n')
