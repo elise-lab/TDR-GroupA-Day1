@@ -174,3 +174,25 @@ def moduli_space_sample(n, distances, start_ang, sampling='rd'):
         raise InternalException('Sampling input not an option. Choose rd or even.')
         
     return sample
+
+def standard_form(penta):
+    #penta should be list of pentagons, so there is nested list notation
+    list_stand_frm = []
+    size = len(penta)
+    for i in range(size):
+        c = penta[i][0] - penta[i][8]
+        d = penta[i][1] - penta[i][9]
+        #call a pentagon, its vertices specifically
+        # apply the formula and create the standard form
+        w1 = (((c*(penta[i][2] - penta[i][8])) + d*(penta[i][3] - penta[i][9]))/(c**2 + d**2), 
+((-d*(penta[i][2] - penta[i][8])) + c*(penta[i][3] - penta[i][9]))/(c**2 + d**2))
+        
+        w2 = (((c*(penta[i][4] - penta[i][8])) + d*(penta[i][5] - penta[i][9]))/(c**2 + d**2), 
+        ((-d*(penta[i][4] - penta[i][8])) + c*(penta[i][5] - penta[i][9]))/(c**2 + d**2))
+        
+        w3 = (((c*(penta[i][6] - penta[i][8])) + d*(penta[i][7] - penta[i][9]))/(c**2 + d**2), 
+        ((-d*(penta[i][6] - penta[i][8])) + c*(penta[i][7] - penta[i][9]))/(c**2 + d**2))
+        
+        list_stand_frm.append([1, w1, w2, w3, 0])
+        
+    return list_stand_frm
