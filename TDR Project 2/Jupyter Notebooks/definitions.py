@@ -143,61 +143,7 @@ def pentagon(theta1, theta2, distances, orientation='ad'):
 
     return np.array(output, dtype=object) #this returns a list 2-4 pentagons, each in numpy array form
 
-def moduli_space_sample(n, distances, start_ang, sampling='rd'):
-    if sum(distances)<1:
-        raise Exception('Distances too small to make a valid pentagon.')
-    
-    sample=[]
-    if sampling=='even':
-        theta1=np.linspace(0.0000001,max_sum_angle_ad(distances, start_ang),math.ceil(math.sqrt(n//2)))
-        for i in theta1:
-            theta2=np.linspace(0.0000001,max_sum_angle_ad(distances, start_ang)-i,math.ceil(math.sqrt(n//2)))
-            for j in theta2:
-                try:
-                    padj=pentagon(float(i),float(j),distances)
-                    for k in padj:
-                        sample.append(k)
-                    popp=pentagon(float(i),float(j),distances,orientation='op')
-                    for k in popp:
-                        sample.append(k)
-                except InternalException as e:
-                    #print(str(e))
-                    #print("firstloop")
-                    continue
-    elif sampling=='rd':
-        for i in range(n):
-            while True:
-                theta1=np.random.uniform(0.0000001,max_sum_angle_ad(distances, start_ang),1)
-                theta2=np.random.uniform(0.0000001,max_sum_angle_ad(distances, start_ang)-theta1,1)
-                try:
-                    p=pentagon(theta1,theta2,distances)
-                    for j in p:
-                        sample.append(j)
-                    break
-                except InternalException as e:
-                    #print(str(e))
-                    #print("firstloop")
-                    continue
-            while True:
-                max_angle=max_sum_angle_op(distances, start_ang)
-                theta1=np.random.uniform(2*math.pi-max_angle,2*math.pi,1)
-                theta2=np.random.uniform(0,max_angle-(2*math.pi-theta1),1)
-                try:
-                    p=pentagon(theta1,theta2,distances, orientation='op')
-                    for j in p:
-                        sample.append(j)
-                    break
-                except InternalException as e:
-                    #print(str(e))
-                    #print("secondloop")
-                    continue
-    else:
-        raise InternalException('Sampling input not an option. Choose rd or even.')
-        
-    return sample
-
-
-def degenerate_pent(n, distances):
+def degenerate_penta(n, distances):
     if sum(distances)<1:
         raise InternalException('Distances too small to make a valid pentagon.')
     
@@ -245,3 +191,63 @@ def degenerate_pent(n, distances):
         output.append(p)
 
     return np.array(output,dtype=object)
+
+def moduli_space_sample(n, distances, start_ang, sampling='rd'):
+    if sum(distances)<1:
+        raise Exception('Distances too small to make a valid pentagon.')
+    
+    sample=[]
+    if sampling=='even':
+        print(max_sum_angle_ad(distances, start_ang))
+        theta1=np.linspace(0.0000001,max_sum_angle_ad(distances, start_ang),math.ceil(math.sqrt(n//2)))
+        for i in theta1:
+            theta2=np.linspace(0.0000001,max_sum_angle_ad(distances, start_ang)-i,math.ceil(math.sqrt(n//2)))
+            for j in theta2:
+                try:
+                    padj=pentagon(float(i),float(j),distances)
+                    for k in padj:
+                        sample.append(k)
+                    popp=pentagon(float(i),float(j),distances,orientation='op')
+                    for k in popp:
+                        sample.append(k)
+                except InternalException as e:
+                    #print(str(e))
+                    #print("firstloop")
+                    continue
+        for i in degenerate_penta(math.ceil(n*0.001),distances):
+            sample.append(i)
+    elif sampling=='rd':
+        for i in range(n):
+            while True:
+                theta1=np.random.uniform(0.0000001,max_sum_angle_ad(distances, start_ang),1)
+                theta2=np.random.uniform(0.0000001,max_sum_angle_ad(distances, start_ang)-theta1,1)
+                try:
+                    p=pentagon(theta1,theta2,distances)
+                    for j in p:
+                        sample.append(j)
+                    break
+                except InternalException as e:
+                    #print(str(e))
+                    #print("firstloop")
+                    continue
+            while True:
+                max_angle=max_sum_angle_op(distances, start_ang)
+                theta1=np.random.uniform(2*math.pi-max_angle,2*math.pi,1)
+                theta2=np.random.uniform(0,max_angle-(2*math.pi-theta1),1)
+                try:
+                    p=pentagon(theta1,theta2,distances, orientation='op')
+                    for j in p:
+                        sample.append(j)
+                    break
+                except InternalException as e:
+                    #print(str(e))
+                    #print("secondloop")
+                    continue
+        for i in degenerate_penta(math.ceil(n*0.001),distances):
+            sample.append(i)
+    else:
+        raise InternalException('Sampling input not an option. Choose rd or even.')
+        
+    return sample
+
+
