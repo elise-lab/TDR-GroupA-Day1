@@ -54,10 +54,9 @@ def max_sum_angle_ad(dist, start_ang): #Take in the distances of our pentagon an
         beta = angle_from_side(b, dist[0], c)
         alpha = angle_from_side(1, dist[3], b) #weirdness when we consider 1, 1, b?
         gamma = angle_from_side(1, b, dist[3])
+        return alpha + beta + gamma
     except ValueError:
         raise ValueError('input new starting angle')
-
-        return alpha + beta + gamma
 
 def max_sum_angle_op(dist, start_ang): #Take in the distances of our pentagon and calculate max alpha+beta for adjacent angles
     try:
@@ -198,7 +197,6 @@ def moduli_space_sample(n, distances, start_ang, sampling='rd'):
     
     sample=[]
     if sampling=='even':
-        print(max_sum_angle_ad(distances, start_ang))
         theta1=np.linspace(0.0000001,max_sum_angle_ad(distances, start_ang),math.ceil(math.sqrt(n//2)))
         for i in theta1:
             theta2=np.linspace(0.0000001,max_sum_angle_ad(distances, start_ang)-i,math.ceil(math.sqrt(n//2)))
