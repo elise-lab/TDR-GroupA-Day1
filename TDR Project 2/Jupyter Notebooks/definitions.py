@@ -88,7 +88,7 @@ def standard_form(penta):
         w3 = (((c*(penta[i][6] - penta[i][8])) + d*(penta[i][7] - penta[i][9]))/(c**2 + d**2), 
         ((-d*(penta[i][6] - penta[i][8])) + c*(penta[i][7] - penta[i][9]))/(c**2 + d**2))
         
-        list_stand_frm.append([1, w1, w2, w3, 0])
+        list_stand_frm.append([1, 0, w1[0], w1[1], w2[0], w2[1], w3[0], w3[1], 0, 0])
         
     return list_stand_frm
 
