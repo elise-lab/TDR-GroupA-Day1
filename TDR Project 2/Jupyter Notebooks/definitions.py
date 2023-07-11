@@ -4,7 +4,7 @@ import xlrd
 from xlwt import Workbook
 
 def xls_to_txt(xlsfile, name):
-    workbook = xlrd.open_workbook(r'{}.xls'.format(xlsfile)
+    workbook = xlrd.open_workbook(r'{}.xls'.format(xlsfile))
     worksheet = workbook.sheet_by_name('Sheet 1')
 
     with open('data/{}.txt'.format(name), 'w+') as f:
