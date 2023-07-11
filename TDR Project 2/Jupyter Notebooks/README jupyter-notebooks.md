@@ -21,13 +21,13 @@ Notebooks where our sampling algorithm was written.
 definitions.py is called to get our algorithm
 reconfig.py is called when generating new data
 
-## Spreadsheets file :
+## Spreadsheets folder :
 Contains the excel files of sampled data
  
-## data file :
+## data folder :
 Contains sorted sampled data on txt files
 
-## iframe_figures file :
+## iframe_figures folder :
 Contains a depiction of genus 3 PCA [old version]
 
 ## standard_form_analysis :
