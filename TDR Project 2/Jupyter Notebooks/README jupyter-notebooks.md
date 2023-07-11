@@ -27,8 +27,8 @@ Contains the excel files of sampled data
 ## data file :
 Contains sorted sampled data on txt files
 
-# iframe_figures file :
+## iframe_figures file :
 Contains a depiction of genus 3 PCA [old version]
 
-# standard_form_analysis :
+## standard_form_analysis :
 Contains code for turning the space of equilateral pentagons into its standard form
