@@ -106,3 +106,9 @@ def moduli_space_sample(n, dist):
                 output.append(pent)
 
     return np.asarray(output,dtype=object)
+
+def angle_from_side(a, b, c):#law of cosines for sides a,b,c returning angle C
+    
+    cos_c = (a **2 + b ** 2 - c ** 2)/(2*a*b)
+    C = math.acos(cos_c)
+    return C
