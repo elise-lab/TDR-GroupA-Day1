@@ -1,3 +1,3 @@
 ## Read Me Document
 
-It is always important to have "README.md" file in your repo so that people know what they looking at.
+The algorithmic sampling of conformation spaces is a problem with applications across computational chemistry and biology. Often these spaces represent the configurations of a molecule at different energies. We present an algorithm for sampling the moduli space of pentagons with mathematical justification. Furthermore, we use persistent cohomology and Eilenberg-MacLane spaces to identify the underlying manifold of said moduli spaces. We use said identification as well as eigenfunctions of the Laplacian to create best fit manifolds. In the process we recover a 2D visualization of our space. The developed pipeline allows for the visualization of complicated high dimensional spaces in lower dimension.
