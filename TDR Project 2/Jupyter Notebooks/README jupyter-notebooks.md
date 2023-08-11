@@ -14,7 +14,7 @@ Notebooks from Dr. Perea's DREimac documentation GitHub page. ComplexProj was us
 ## QData and M5-data-gen :
 Notebooks where our data sets have been generated and the code needed for that to occur
 
-## New Strat Pentagon Generation/Pentagon Generation :
+## New Strat Pentagon Generation/[New Strat ]Pentagon Generation :
 Notebooks where our sampling algorithm was written.
 
 ## .py files :
@@ -32,3 +32,12 @@ Contains a depiction of genus 3 PCA [old version]
 
 ## standard_form_analysis :
 Contains code for turning the space of equilateral pentagons into its standard form
+
+## figures folder :
+Contains saved persistence diagrams and visualizations of our sampled pentagon spaces
+
+## Unfolding torus :
+Jupyter notebook containing the algorithm to unfold topological surfaces into their planar decompositions
+
+## linear regression and gradient descent - DREimac sphere :
+File containing the code for manifold modeling of the sphere
