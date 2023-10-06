@@ -1,9 +1,9 @@
 import xlrd
 
-workbook = xlrd.open_workbook(r'G3large.xls')
+workbook = xlrd.open_workbook(r'G2.xls')
 worksheet = workbook.sheet_by_name('Sheet 1')
 
-with open('1. data/G3_large.txt', 'w+') as f:
+with open('1. data/G2.txt', 'w+') as f:
     for i in range(worksheet.nrows-1):
         for j in range(4):
             f.write(worksheet.cell(i, j).value)
